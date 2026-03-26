@@ -1,0 +1,25 @@
+const express = require('express');
+const axios = require('axios');
+const app = express();
+app.use(express.json());
+
+const VERIFY_TOKEN = 'vaisselle2026';
+const MAKE_WEBHOOK = 'https://hook.eu1.make.com/z68so2d1pmddq3dfpgk0s9o5hwbfbw5z';
+
+app.get('/webhook', (req, res) => {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+  if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+    res.status(200).send(challenge);
+  } else {
+    res.sendStatus(403);
+  }
+});
+
+app.post('/webhook', (req, res) => {
+  axios.post(MAKE_WEBHOOK, req.body);
+  res.sendStatus(200);
+});
+
+app.listen(3000, () => console.log('Serveur démarré sur port 3000'));
