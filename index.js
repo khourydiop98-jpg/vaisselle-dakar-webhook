@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 const VERIFY_TOKEN = 'vaisselle2026';
-const MAKE_WEBHOOK = 'const MAKE_WEBHOOK = 'https://hook.eu1.make.com/iwk9xw2ddjoiva4x8s1eij3wjf70wyll';
+const MAKE_WEBHOOK = 'https://hook.eu1.make.com/iwk9xw2ddjoiva4x8s1eij3wjf70wyll';
 
 app.get('/webhook', (req, res) => {
   const mode = req.query['hub.mode'];
