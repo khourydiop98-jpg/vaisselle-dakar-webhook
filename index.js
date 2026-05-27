@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 const VERIFY_TOKEN = 'asna_whatsapp';
-const MAKE_WEBHOOK = 'https://hook.eu1.make.com/iwk9xw2ddjoiva4x8s1eij3wjf70wyll';
+const MAKE_WEBHOOK = 'https://hook.eu1.make.com/jqzvg3s7m7nyqpvfbh7agtv6a2rn25ex';
 
 app.get('/webhook', (req, res) => {
   const mode = req.query['hub.mode'];
